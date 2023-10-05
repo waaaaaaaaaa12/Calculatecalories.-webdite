@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กี่แคลกันนะ</title>
+    <style>
+        /* เพิ่มสไตล์เพื่อปรับแต่งหน้าเว็บ */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f5f5f5; /* สีพื้นหลังสบายตา */
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input, button {
+            padding: 20px;
+            margin: 2px;
+        }
+
+        #resultContainer {
+            background-color: #ffffff; /* สีพื้นหลังของกล่องผลลัพธ์ */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #result {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 32px;
+            margin-bottom: 13px;
+        }
+    </style>
+</head>
+<body>
+    <h1>กี่แคลกันนะ</h1>
+    <p>ป้อนชื่อเมนูอาหารที่ต้องการ:</p>
+    <input type="text" id="foodName" placeholder="ชื่ออาหาร">
+    <input type="number" id="foodWeight" placeholder="น้ำหนัก (กรัม)">
+    <button onclick="calculateCalories()">คำนวณ</button>
+    <div id="resultContainer">
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const foodData = [ 
+           
+        {name:"ข้าวขาหมู",calories:500},
+            {name:"ผัดผักบุ้งไฟแดง",calories:80},
+            {name:"ผัดกะเพรา",calories:300},
+            {name:"ส้มตำ",calories:240},
+            {name:"ข้าวหมูแดง",calories:500},
+            {name:"ก๋วยเตี๋ยวน้ำตก",calories:120},
+            {name:"ผัดไทย",calories:350},
+            {name:"ข้าวมันไก่",calories:400},
+            {name:"ต้มยำกุ้ง",calories:300},
+            {name:"หมูกระทะ",calories:500},
+            {name:"ก๋วยเตี๋ยว",calories:350},
+            {name:"กะหรี่ปั๊บ",calories:300},
+            {name:"ลาบ",calories:200},
+            {name:"สุกี้น้ำ",calories:400},
+            {name:"ผัดไทยไข่เจียว",calories:400},
+            {name:"หมูทอด",calories:600},
+            {name:"ปาท่องโก๋",calories:120},
+            {name:"หมูสับประดุจแบะ",calories:300},
+            {name:"ต้มไก่",calories:300},
+            {name:"แกงส้ม",calories:300},
+            {name:"แกงมัสมั่น",calories:400},
+            {name:"สาคู",calories:250},
+            {name:"ไก่ย่าง",calories:200},
+            {name:"ไข่เจียว",calories:100},
+            {name:"ต้มแซ่บ",calories:300},
+            {name:"ลูกชิ้น",calories:100},
+            {name:"น้ำพริกกะปิ",calories:60},
+            {name:"คะน้าหมูกรอบ",calories:450},
+            {name:"ยำขนมจีน",calories:300},
+            {name:"ข้าวเหนียวหมูปิ้ง",calories:400},
+            {name:"ไก่น้ำ",calories:300},
+            {name:"กุ้งผัดผงกะหรี่",calories:350},
+            {name:"หมูทอดน้ำปลา",calories:500},
+            {name:"พะโล้",calories:600},
+            {name:"แกงเห็ดผัดฉ่า",calories:200},
+            {name:"ข้าวผัดปู",calories:350},
+            {name:"สาคูไส้หมู",calories:300},
+            {name:"ยำเป็นย่าง",calories:300},
+            {name:"ข้าวหมูแดง",calories:350},
+            {name:"ต้มยำกุ้ง",calories:250},
+            {name:"ราเมง",calories:250},
+            {name:"แกงเขียวหวาน",calories:300},
+
+
+        ];
+
+        function calculateCalories() {
+            const foodName = document.getElementById("foodName").value;
+            const foodWeight = parseFloat(document.getElementById("foodWeight").value);
+            const resultContainer = document.getElementById("result");
+
+            const food = foodData.find(item => item.name === foodName);
+
+            if (food && !isNaN(foodWeight)) {
+                const totalCalories = (food.calories * foodWeight) / 100;
+                resultContainer.innerHTML = `${foodName} (${foodWeight} กรัม) มีค่าพลังงานประมาณ ${totalCalories.toFixed(2)} กิโลแคลอรี่`;
+            } else {
+                resultContainer.innerHTML = "ไม่พบข้อมูลจ้าา";
+            }
+        }
+    </script>
+</body>
+</html>
